@@ -9,10 +9,11 @@ public class GuarderiaUno {
         // charAT(0) obtiene el primer caracter de una cadena ej: Masculino = M
         char gender = JOptionPane.showInputDialog("Ingrese el genero del niño: ").charAt(0);
         String Id = JOptionPane.showInputDialog("Ingrese el número de documento: ");
+        String Alergias = JOptionPane.showInputDialog("Ingrese una alergia del niño: ");
         String AttendantName = JOptionPane.showInputDialog("Ingrese el nombre del Acudiente: ");
         String ContactNumber = JOptionPane.showInputDialog("Ingrese el número del Contacto: ");
 
-       Child newChild = new Child( nombre, age, gender, Id, AttendantName, ContactNumber);
+       Child newChild = new Child( nombre, age, gender, Id, Alergias, AttendantName, ContactNumber);
 
        // Mostrar mensaje en una interfaz
        JOptionPane.showMessageDialog(null, newChild);
@@ -26,16 +27,18 @@ public class GuarderiaUno {
         private int age;
         private char gender;
         private String Id;
+        private String Alergias;
         private String AttendantName;
         private String ContactNumber;
 
-        public Child(String nombre, int age, char gender, String Id, String AttendantName, String ContactNumber) {
+        public Child(String nombre, int age, char gender, String Id,String Alergias,  String AttendantName, String ContactNumber) {
             this.nombre = nombre;
             this.age = age;
             this.gender = gender;
             this.Id = Id;
             this.AttendantName = AttendantName;
             this.ContactNumber = ContactNumber;
+            this.Alergias = Alergias;
         }
 
         public String getNombre() {
@@ -51,7 +54,7 @@ public class GuarderiaUno {
         };
 
         public String getId() {
-          return Id;
+            return Id;
         };
 
         public String getAttendantName() {
@@ -61,6 +64,10 @@ public class GuarderiaUno {
         public String getContactNumber() {
             return ContactNumber;
         };
+
+        public String getAlergias() {
+            return Alergias;
+        }
 
         public void setNombre(String nombre) {
             this.nombre = nombre;
@@ -86,10 +93,14 @@ public class GuarderiaUno {
             this.ContactNumber = ContactNumber;
         };
 
+        public void setAlergias(String alergias) {
+            this.Alergias = alergias;
+        }
+
         // Se sobrescribe el toString para mostrar la información del objeto
         public String toString() {
             return "Nombre: "+ nombre + "\n" + "Edad: "+ age + "\n" +"Genero: "+ gender + "\n" +"Número de identificación: "
-                    + Id + "\n" + "Nombre del acudiente: "+ AttendantName + "\n" + "Número de contacto: "+ ContactNumber;
+                    + Id + "\n" + "Nombre del acudiente: "+ AttendantName + "\n" + "Número de contacto: "+ ContactNumber + "\n" +"Alergias: "+ Alergias + "\n";
         }
     }
 
