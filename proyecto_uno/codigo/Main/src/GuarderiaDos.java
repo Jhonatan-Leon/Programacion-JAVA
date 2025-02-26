@@ -7,22 +7,39 @@ public class GuarderiaDos {
 
             Daycare guarderia = new Daycare("Guardería Infantil", "123456789");
 
-            // Solicitar información por medio de una interfaz
-            String nombre = JOptionPane.showInputDialog("Ingrese el nombre del niño: ");
-            int age = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del niño: "));
-            char gender = JOptionPane.showInputDialog("Ingrese el género del niño: ").charAt(0);
-            String Id = JOptionPane.showInputDialog("Ingrese el número de documento: ");
-            String Alergias = JOptionPane.showInputDialog("Ingrese una alergia del niño: ");
-            String AttendantName = JOptionPane.showInputDialog("Ingrese el nombre del acudiente: ");
-            String ContactNumber = JOptionPane.showInputDialog("Ingrese el número de contacto: ");
+            int registro = 5;
 
-            // Crear objeto Child y agregarlo a la guardería
-            Child child = new Child(nombre, age, gender, Id, Alergias, AttendantName, ContactNumber);
-            guarderia.agregarChild(child);
+            for (int i = 0; i <= registro; i++) {
+                String nombre = JOptionPane.showInputDialog("Ingrese el nombre del niño: ");
+                int age = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del niño: "));
+                char gender = JOptionPane.showInputDialog("Ingrese el género del niño: ").charAt(0);
+                String Id = JOptionPane.showInputDialog("Ingrese el número de documento: ");
+                String Alergias = JOptionPane.showInputDialog("Ingrese una alergia del niño: ");
+                String AttendantName = JOptionPane.showInputDialog("Ingrese el nombre del acudiente: ");
+                String ContactNumber = JOptionPane.showInputDialog("Ingrese el número de contacto: ");
 
-            // Mostrar lista de niños
-            guarderia.listarChildren();
-        }
+                Child child = new Child(nombre, age, gender, Id, Alergias, AttendantName, ContactNumber);
+                guarderia.agregarChild(child);
+            }
+
+
+            JOptionPane.showMessageDialog(null, guarderia.ShowChildren());
+
+            // guarderia.eliminarChild("2");
+
+            /* Actualizar
+            String nombreupdate = JOptionPane.showInputDialog("Ingrese el nombre del niño: ");
+            int ageupdate = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del niño: "));
+            char genderupdate = JOptionPane.showInputDialog("Ingrese el género del niño: ").charAt(0);
+            String Idupdate = JOptionPane.showInputDialog("Ingrese el número de documento: ");
+            String Alergiasupdate = JOptionPane.showInputDialog("Ingrese una alergia del niño: ");
+            String AttendantNameupdate = JOptionPane.showInputDialog("Ingrese el nombre del acudiente: ");
+            String ContactNumberupdate = JOptionPane.showInputDialog("Ingrese el número de contacto: ");
+
+            Child updateChild = new Child(nombreupdate, ageupdate, genderupdate, Idupdate, Alergiasupdate, AttendantNameupdate, ContactNumberupdate);
+            guarderia.actualizarChild(Idupdate, updateChild );
+             */
+        };
 
         public static class Child {
             private String nombre;
@@ -45,39 +62,27 @@ public class GuarderiaDos {
 
             public String getNombre() {
                 return nombre;
-            }
-
-            ;
+            };
 
             public int getAge() {
                 return age;
-            }
-
-            ;
+            };
 
             public char getGender() {
                 return gender;
-            }
-
-            ;
+            };
 
             public String getId() {
                 return Id;
-            }
-
-            ;
+            };
 
             public String getAttendantName() {
                 return AttendantName;
-            }
-
-            ;
+            };
 
             public String getContactNumber() {
                 return ContactNumber;
-            }
-
-            ;
+            };
 
             public String getAlergias() {
                 return Alergias;
@@ -134,7 +139,6 @@ public class GuarderiaDos {
                 public Daycare(String nombre, String nit) {
                     this.nombre = nombre;
                     this.nit = nit;
-                    this.children = new ArrayList<>();
                 }
 
                 public void agregarChild(Child child) {
@@ -166,7 +170,7 @@ public class GuarderiaDos {
                     System.out.println("No se encontró un niño con este ID.");
                 }
 
-                public void listarChildren() {
+                public Object ShowChildren() {
                     if (children.isEmpty()) {
                         System.out.println("No hay niños registrados.");
                     } else {
@@ -174,6 +178,7 @@ public class GuarderiaDos {
                             System.out.println(child);
                         }
                     }
+                    return null ;
                 }
 
                 public String getNombre() {
